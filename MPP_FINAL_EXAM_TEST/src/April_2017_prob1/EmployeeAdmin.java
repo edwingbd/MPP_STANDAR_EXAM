@@ -1,7 +1,9 @@
 package April_2017_prob1;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class EmployeeAdmin {
 
@@ -10,13 +12,22 @@ public class EmployeeAdmin {
 	// socSecNums input list
 	public static List<String> prepareSsnReport(HashMap<String, Employee> table, List<String> socSecNums) {
 		//implement
-		return null;
+		
+		return table.keySet().stream()
+				.filter(e->!socSecNums.contains(e.toString()))
+				.map(e->e.toString())
+				.sorted((a,b)->a.compareTo(b))
+				.collect(Collectors.toList());
 				
 	}			
 		//return a list of Employees whose social security number is on the input list socSecNums
 				//and whose salary is >80000; the return list does not need to be sorted  
 	public static List<Employee> prepareEmpReport(HashMap<String, Employee> table, List<String> socSecNums) {
 		//implement
-		return null;
+		return table.keySet().stream()
+				.filter(e->socSecNums.contains(e.toString()))
+				.map(e->table.get(e.toString()))
+				.filter(e->e.getSalary()>80000)
+				.collect(Collectors.toList());
 	}
 }
