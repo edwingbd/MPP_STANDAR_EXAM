@@ -6,7 +6,7 @@ import java.util.List;
 
 /** This class tests the code package */
 public class Main {
-    /* Uncomment when you are ready to test your code
+    // Uncomment when you are ready to test your code
 	public static void main(String[] args) {
 		Account[] someCheckingAccounts = new CheckingAccount[2];
 		someCheckingAccounts[0] = new CheckingAccount("231-471", 25.00, 100);
@@ -36,5 +36,5 @@ public class Main {
 		
 		
 	}
-     */
+    
 }

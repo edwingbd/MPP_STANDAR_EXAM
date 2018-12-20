@@ -1,19 +1,33 @@
 package May_2017_prob1;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 public class Problem1 {
 	
 	//Returns a list of those strings which belong to just one of the two lists
 	//Hint: use concat
 	public static List<String> elementsInJustOne(List<String> list1, List<String> list2) {
-		//implement
-		return null;
+		
+		return Stream.concat(
+				list1.stream().map(e->e), 
+				list2.stream().map(e->e))
+				.filter(e-> (list2.contains(e) & !list1.contains(e)) || 
+						    (list1.contains(e) & !list2.contains(e)))
+				.distinct()
+				.collect(Collectors.toList()) ;
+		
+//		List<String> list1 = Arrays.asList(new String[]{"friend", "", "bat"});"tree" bike
+//		List<String> list2 = Arrays.asList(new String[]{, "strong", , "weak"});"tree" bike
 	}
 	
 	//Returns a list, in sorted order, of the names of the Customers in the input list who live in Fairfield
 	public static List<String> getAllFairfieldCustomers(List<Customer> list) {
 		//implement
-		return null;
+		return list.stream()
+				.filter(e->e.getCity()=="Fairfield")
+				.map(e->e.getName())
+				.collect(Collectors.toList());
 	}
 	
 	

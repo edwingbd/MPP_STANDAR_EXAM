@@ -4,7 +4,8 @@ import java.util.List;
 
 public class Admin {
 	public static double computeUpdatedBalanceSum(List<Employee> list) {
-		//implement
-		return 0.0;
+		
+		return list.stream().map(e->e.computeUpdatedBalanceSum())
+				.reduce((a,b)->a+b).orElse(0.0) ;
 	}
 }
